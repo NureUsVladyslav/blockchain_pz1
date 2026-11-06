@@ -1,0 +1,7 @@
+node_modules/
+
+data/
+wallets/
+
+.DS_Store
+Thumbs.db

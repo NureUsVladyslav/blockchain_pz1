@@ -1,0 +1,87 @@
+x-node: &node
+  build: .
+  image: pz1-blockchain
+  restart: unless-stopped
+
+x-env: &env
+  HOST: 0.0.0.0
+  PORT: "3000"
+  GENESIS_DIFFICULTY: "12"
+
+services:
+  node1:
+    <<: *node
+    environment:
+      <<: *env
+      NODE_URL: http://node1:3000
+      PEERS: http://node2:3000,http://node3:3000,http://node4:3000,http://node5:3000
+      DATA_DIR: /data
+      WALLET_FILE: /wallets/node1.json
+    ports:
+      - "3001:3000"
+    volumes:
+      - node1-data:/data
+      - ./wallets:/wallets
+
+  node2:
+    <<: *node
+    environment:
+      <<: *env
+      NODE_URL: http://node2:3000
+      PEERS: http://node1:3000,http://node3:3000,http://node4:3000,http://node5:3000
+      DATA_DIR: /data
+      WALLET_FILE: /wallets/node2.json
+    ports:
+      - "3002:3000"
+    volumes:
+      - node2-data:/data
+      - ./wallets:/wallets
+
+  node3:
+    <<: *node
+    environment:
+      <<: *env
+      NODE_URL: http://node3:3000
+      PEERS: http://node1:3000,http://node2:3000,http://node4:3000,http://node5:3000
+      DATA_DIR: /data
+      WALLET_FILE: /wallets/node3.json
+    ports:
+      - "3003:3000"
+    volumes:
+      - node3-data:/data
+      - ./wallets:/wallets
+
+  node4:
+    <<: *node
+    environment:
+      <<: *env
+      NODE_URL: http://node4:3000
+      PEERS: http://node1:3000,http://node2:3000,http://node3:3000,http://node5:3000
+      DATA_DIR: /data
+      WALLET_FILE: /wallets/node4.json
+    ports:
+      - "3004:3000"
+    volumes:
+      - node4-data:/data
+      - ./wallets:/wallets
+
+  node5:
+    <<: *node
+    environment:
+      <<: *env
+      NODE_URL: http://node5:3000
+      PEERS: http://node1:3000,http://node2:3000,http://node3:3000,http://node4:3000
+      DATA_DIR: /data
+      WALLET_FILE: /wallets/node5.json
+    ports:
+      - "3005:3000"
+    volumes:
+      - node5-data:/data
+      - ./wallets:/wallets
+
+volumes:
+  node1-data:
+  node2-data:
+  node3-data:
+  node4-data:
+  node5-data:

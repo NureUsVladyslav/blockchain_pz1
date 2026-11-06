@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" width="900" height="560" font-family="Arial, sans-serif">
+<rect width="900" height="560" fill="white"/>
+<text x="450" y="30" text-anchor="middle" font-size="18" font-weight="bold">Залежність часу майнінгу від складності (вісь часу логарифмічна)</text>
+<line x1="90" y1="470" x2="870" y2="470" stroke="#ddd"/>
+<text x="82" y="474" text-anchor="end" font-size="12">10^-5</text>
+<line x1="90" y1="411.42857142857144" x2="870" y2="411.42857142857144" stroke="#ddd"/>
+<text x="82" y="415.42857142857144" text-anchor="end" font-size="12">10^-4</text>
+<line x1="90" y1="352.8571428571429" x2="870" y2="352.8571428571429" stroke="#ddd"/>
+<text x="82" y="356.8571428571429" text-anchor="end" font-size="12">10^-3</text>
+<line x1="90" y1="294.28571428571433" x2="870" y2="294.28571428571433" stroke="#ddd"/>
+<text x="82" y="298.28571428571433" text-anchor="end" font-size="12">10^-2</text>
+<line x1="90" y1="235.71428571428572" x2="870" y2="235.71428571428572" stroke="#ddd"/>
+<text x="82" y="239.71428571428572" text-anchor="end" font-size="12">10^-1</text>
+<line x1="90" y1="177.1428571428571" x2="870" y2="177.1428571428571" stroke="#ddd"/>
+<text x="82" y="181.1428571428571" text-anchor="end" font-size="12">10^0</text>
+<line x1="90" y1="118.57142857142861" x2="870" y2="118.57142857142861" stroke="#ddd"/>
+<text x="82" y="122.57142857142861" text-anchor="end" font-size="12">10^1</text>
+<line x1="90" y1="60" x2="870" y2="60" stroke="#ddd"/>
+<text x="82" y="64" text-anchor="end" font-size="12">10^2</text>
+<line x1="129" y1="60" x2="129" y2="470" stroke="#eee"/>
+<text x="129" y="490" text-anchor="middle" font-size="12">8</text>
+<text x="129" y="506" text-anchor="middle" font-size="11" fill="#555">(2 hex-нулів)</text>
+<line x1="363" y1="60" x2="363" y2="470" stroke="#eee"/>
+<text x="363" y="490" text-anchor="middle" font-size="12">12</text>
+<text x="363" y="506" text-anchor="middle" font-size="11" fill="#555">(3 hex-нулів)</text>
+<line x1="597" y1="60" x2="597" y2="470" stroke="#eee"/>
+<text x="597" y="490" text-anchor="middle" font-size="12">16</text>
+<text x="597" y="506" text-anchor="middle" font-size="11" fill="#555">(4 hex-нулів)</text>
+<line x1="831" y1="60" x2="831" y2="470" stroke="#eee"/>
+<text x="831" y="490" text-anchor="middle" font-size="12">20</text>
+<text x="831" y="506" text-anchor="middle" font-size="11" fill="#555">(5 hex-нулів)</text>
+<line x1="90" y1="60" x2="90" y2="470" stroke="black"/>
+<line x1="90" y1="470" x2="870" y2="470" stroke="black"/>
+<text x="480" y="532" text-anchor="middle" font-size="14">Складність, кількість нульових бітів на початку хешу</text>
+<text transform="translate(22 265) rotate(-90)" text-anchor="middle" font-size="14">Час майнінгу одного блоку, с (логарифмічна шкала)</text>
+<polyline points="129,334.1118848809998 363,263.5848573254385 597,193.05782976987717 831,122.53080221431588" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 5"/>
+<circle cx="123" cy="327.49282017674153" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="337.57691432999" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="351.52174916431545" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="377.22996780222326" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="398.65941176805455" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="123" cy="461.4410721959708" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="329.8367617170128" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="330.1036535530444" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="324.0224685510349" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="324.2850117595905" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="123" cy="310.12757252183684" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="339.7864399416086" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="349.7257617115084" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="357.1322205314259" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="418.88244010518065" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="123" cy="342.9569603623341" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="293.7271843694458" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="336.05137259524423" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="357.3467801194139" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="345.39535425451345" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="123" cy="358.9726867109766" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="403.70069842339336" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="345.3195860899949" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="373.45319935683153" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="331.95606027753047" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="123" cy="317.83836427969135" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="126" cy="334.1288528165299" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="129" cy="318.9171394853465" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="132" cy="343.3127804240356" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="135" cy="316.07366054001545" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="317.6146234705262" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="279.87838511998893" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="258.1753406890904" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="248.36475230668196" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="254.3126828964312" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="255.90960622945363" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="288.5999937732813" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="292.5889246067233" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="285.9738149250905" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="264.01245775965094" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="252.70706303866868" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="246.31096416760644" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="286.3112385291003" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="294.6673230929655" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="283.1263936628956" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="285.26335185581064" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="237.25355727645277" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="446.59053917032963" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="262.7683711550458" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="243.11158025964897" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="308.7766455894971" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="336.46997134732237" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="261.0539109758798" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="282.7437955454013" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="275.377403598312" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="357" cy="280.1517059904277" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="360" cy="270.2505143747419" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="363" cy="238.55091971457412" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="366" cy="258.23415146001673" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="369" cy="228.2466928682808" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="217.7655040699243" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="174.15924926555078" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="200.88094611320685" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="232.41419847594048" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="217.63164160690636" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="211.2509061914035" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="178.78005482490948" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="216.3637137618549" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="253.8481105295593" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="195.20795502580557" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="313.07272576862033" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="232.20222935860454" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="206.5114679701087" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="215.12424074664364" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="213.11638430601084" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="181.78553486183557" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="158.03987595487462" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="225.26250044413933" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="231.1965343047399" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="175.42263224796824" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="223.11279026948228" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="172.64124831040994" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="250.34897142881448" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="230.49235793957595" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="261.57822522135245" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="591" cy="185.52286330051845" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="594" cy="253.13144598931962" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="597" cy="173.47297842440213" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="600" cy="205.4969022487046" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="603" cy="191.9111837911471" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="147.20964002935693" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="171.45548490147723" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="132.063020987877" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="185.0402977381479" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="152.40082797469967" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="100.08413305975006" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="113.17910451362832" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="152.40191858000065" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="159.7778490281076" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="177.8341122255872" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="123.72542929920593" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="133.203383144217" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="120.66724523586447" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="143.62250954287106" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="130.06622120880508" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="151.28730036306882" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="160.5123696429534" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="132.98894740410935" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="119.48613434714156" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="179.25967008502334" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="141.8798101428642" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="97.02606950171332" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="122.33745931719102" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="103.25571547329554" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="111.49591073003086" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="825" cy="118.54632142917086" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="828" cy="99.71795388728242" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="831" cy="185.62801867881961" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="834" cy="161.5044083978181" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<circle cx="837" cy="102.70755370951485" r="3" fill="#2980b9" fill-opacity="0.35"/>
+<line x1="129" y1="461.4410721959708" x2="129" y2="293.7271843694458" stroke="#1a5276" stroke-width="2"/>
+<line x1="121" y1="461.4410721959708" x2="137" y2="461.4410721959708" stroke="#1a5276" stroke-width="2"/>
+<line x1="121" y1="293.7271843694458" x2="137" y2="293.7271843694458" stroke="#1a5276" stroke-width="2"/>
+<line x1="363" y1="446.59053917032963" x2="363" y2="228.2466928682808" stroke="#1a5276" stroke-width="2"/>
+<line x1="355" y1="446.59053917032963" x2="371" y2="446.59053917032963" stroke="#1a5276" stroke-width="2"/>
+<line x1="355" y1="228.2466928682808" x2="371" y2="228.2466928682808" stroke="#1a5276" stroke-width="2"/>
+<line x1="597" y1="313.07272576862033" x2="597" y2="158.03987595487462" stroke="#1a5276" stroke-width="2"/>
+<line x1="589" y1="313.07272576862033" x2="605" y2="313.07272576862033" stroke="#1a5276" stroke-width="2"/>
+<line x1="589" y1="158.03987595487462" x2="605" y2="158.03987595487462" stroke="#1a5276" stroke-width="2"/>
+<line x1="831" y1="185.62801867881961" x2="831" y2="97.02606950171332" stroke="#1a5276" stroke-width="2"/>
+<line x1="823" y1="185.62801867881961" x2="839" y2="185.62801867881961" stroke="#1a5276" stroke-width="2"/>
+<line x1="823" y1="97.02606950171332" x2="839" y2="97.02606950171332" stroke="#1a5276" stroke-width="2"/>
+<polyline points="129,334.1118848809998 363,262.41288373788404 597,197.31932837860137 831,125.76984269135022" fill="none" stroke="#1a5276" stroke-width="2"/>
+<circle cx="129" cy="334.1118848809998" r="6" fill="#1a5276"/>
+<circle cx="363" cy="262.41288373788404" r="6" fill="#1a5276"/>
+<circle cx="597" cy="197.31932837860137" r="6" fill="#1a5276"/>
+<circle cx="831" cy="125.76984269135022" r="6" fill="#1a5276"/>
+<rect x="96" y="60" width="360" height="88" fill="white" stroke="#bbb"/>
+<circle cx="110" cy="74" r="6" fill="#1a5276"/><text x="126" y="78" font-size="12">Середній час за 30 запусків</text>
+<line x1="104" y1="94" x2="116" y2="94" stroke="#1a5276" stroke-width="2"/><text x="126" y="98" font-size="12">Розкид: від мінімуму до максимуму</text>
+<circle cx="110" cy="114" r="3" fill="#2980b9" fill-opacity="0.5"/><text x="126" y="118" font-size="12">Окремі запуски</text>
+<line x1="104" y1="134" x2="116" y2="134" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/><text x="126" y="138" font-size="12">Теорія: час зростає як 2^складність (від першого рівня)</text>
+</svg>
