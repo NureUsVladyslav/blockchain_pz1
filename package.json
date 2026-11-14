@@ -10,7 +10,8 @@
     "network": "node scripts/start-network.ts",
     "cli": "node src/cli.ts",
     "attacks": "node scripts/attacks.ts",
-    "experiment": "node scripts/experiment.ts"
+    "experiment": "node scripts/experiment.ts",
+    "ui": "node src/ui.ts"
   },
   "devDependencies": {
     "@types/node": "^22.20.5",

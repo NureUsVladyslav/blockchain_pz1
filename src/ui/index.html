@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Блокчейн: панель керування</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        font:
+          14px/1.45 system-ui,
+          sans-serif;
+        margin: 0 auto;
+        max-width: 1100px;
+        padding: 16px;
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 12px;
+      }
+      h2 {
+        font-size: 16px;
+        margin: 0 0 8px;
+      }
+      section {
+        border: 1px solid GrayText;
+        border-radius: 6px;
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      .cards {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .card {
+        border: 1px solid GrayText;
+        border-radius: 6px;
+        padding: 8px 10px;
+        min-width: 230px;
+        cursor: pointer;
+        flex: 1;
+      }
+      .card.selected {
+        border-width: 3px;
+        padding: 6px 8px;
+      }
+      .card div {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th,
+      td {
+        border: 1px solid GrayText;
+        padding: 3px 8px;
+        text-align: left;
+      }
+      td.num,
+      th.num {
+        text-align: right;
+      }
+      .row {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+      input,
+      select,
+      button {
+        font: inherit;
+        padding: 4px 8px;
+      }
+      input.wide {
+        flex: 1;
+        min-width: 260px;
+      }
+      .muted {
+        color: GrayText;
+      }
+      code,
+      .mono {
+        font-family: ui-monospace, Consolas, monospace;
+      }
+      details {
+        border: 1px solid GrayText;
+        border-radius: 6px;
+        padding: 4px 8px;
+        margin-bottom: 6px;
+      }
+      summary {
+        cursor: pointer;
+      }
+      details table {
+        margin: 6px 0;
+      }
+      .entry {
+        border-top: 1px solid GrayText;
+        padding: 6px 0;
+      }
+      .entry pre {
+        margin: 4px 0 0;
+        white-space: pre-wrap;
+        word-break: break-all;
+      }
+      #banner {
+        margin-bottom: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Блокчейн: панель керування</h1>
+    <div id="banner" class="muted"></div>
+
+    <section>
+      <h2>Вузли</h2>
+      <div class="cards" id="nodes"></div>
+      <p id="consensus" style="margin: 8px 0 0"></p>
+    </section>
+
+    <section>
+      <h2>Керування вузлом <span id="current"></span></h2>
+      <div class="row">
+        <button data-cmd="mine">Намайнити блок</button>
+        <button data-cmd="sync">Синхронізуватися</button>
+        <button data-cmd="validate">Перевірити ланцюг</button>
+        <button data-cmd="offline">Відключити від мережі</button>
+        <button data-cmd="online">Підключити до мережі</button>
+      </div>
+      <div class="row">
+        <input
+          id="peer-url"
+          class="wide"
+          placeholder="Адреса сусіда, наприклад http://localhost:3002"
+        />
+        <button id="add-peer">Додати сусіда</button>
+      </div>
+      <div class="muted">Сусіди цього вузла: <span id="peers"></span></div>
+    </section>
+
+    <section>
+      <h2>Гаманці</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Назва</th>
+            <th>Адреса</th>
+            <th class="num">Баланс на цьому вузлі</th>
+          </tr>
+        </thead>
+        <tbody id="wallets"></tbody>
+      </table>
+      <div class="row" style="margin-top: 8px">
+        <input id="new-wallet" placeholder="Назва нового гаманця" />
+        <button id="create-wallet">Створити гаманець</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Надіслати транзакцію</h2>
+      <div class="row">
+        <label
+          >Від:
+          <select id="send-from"></select
+        ></label>
+        <label
+          >Кому:
+          <select id="send-to-select"></select>
+        </label>
+      </div>
+      <div class="row">
+        <input
+          id="send-to"
+          class="wide mono"
+          placeholder="Адреса отримувача (64 hex-символи)"
+        />
+      </div>
+      <div class="row">
+        <label
+          >Сума:
+          <input
+            id="send-amount"
+            type="number"
+            min="0"
+            step="1"
+            value="5"
+            style="width: 90px"
+        /></label>
+        <label
+          >Комісія:
+          <input
+            id="send-fee"
+            type="number"
+            min="0"
+            step="1"
+            value="1"
+            style="width: 90px"
+        /></label>
+        <button id="send">Надіслати</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Мемпул (транзакції в черзі)</h2>
+      <div id="mempool"></div>
+    </section>
+
+    <section>
+      <h2>Ланцюг</h2>
+      <div id="chain"></div>
+    </section>
+
+    <section>
+      <h2>Легкий клієнт: перевірити, що транзакція є в блоці</h2>
+      <div class="row">
+        <input
+          id="verify-id"
+          class="wide mono"
+          placeholder="Ідентифікатор транзакції (64 hex-символи)"
+        />
+        <button id="verify">Перевірити</button>
+      </div>
+    </section>
+
+    <section>
+      <h2>Журнал дій</h2>
+      <div id="log" class="muted">Поки що порожньо</div>
+    </section>
+
+    <script>
+      "use strict";
+
+      const state = {
+        node: 0,
+        urls: [],
+        wallets: [],
+        names: new Map(),
+        busy: false,
+        seen: new Map(),
+      };
+      const $ = (id) => document.getElementById(id);
+
+      // Створює елемент із текстом (textContent: дані з мережі ніколи не вставляються як HTML)
+      function el(tag, text, attrs) {
+        const node = document.createElement(tag);
+        if (text !== undefined && text !== null)
+          node.textContent = String(text);
+        if (attrs)
+          for (const [key, value] of Object.entries(attrs))
+            node.setAttribute(key, value);
+        return node;
+      }
+
+      const short = (hash) =>
+        typeof hash === "string" && hash.length > 16
+          ? hash.slice(0, 12) + "…"
+          : String(hash ?? "");
+      const formatTime = (ms) =>
+        new Date(ms).toISOString().replace("T", " ").slice(0, 19);
+
+      // Ім'я гаманця, якщо адреса відома нам, інакше скорочена адреса
+      function who(address) {
+        const name = state.names.get(address);
+        return name ? name + " (" + short(address) + ")" : short(address);
+      }
+
+      async function api(method, path, body) {
+        const response = await fetch(path, {
+          method,
+          headers: { "content-type": "application/json" },
+          ...(body !== undefined ? { body: JSON.stringify(body) } : {}),
+        });
+        const data = await response.json();
+        if (!response.ok)
+          throw new Error(data.reason ?? "Помилка " + response.status);
+        return data;
+      }
+
+      // Перемальовує частину сторінки тільки якщо дані змінились (щоб не згортати відкриті блоки)
+      function renderIfChanged(key, data, render) {
+        const signature = JSON.stringify(data);
+        if (state.seen.get(key) === signature) return;
+        state.seen.set(key, signature);
+        render();
+      }
+
+      function table(headers, rows, numericColumns) {
+        const t = el("table");
+        const head = el("tr");
+        headers.forEach((h, i) =>
+          head.appendChild(
+            el("th", h, numericColumns.includes(i) ? { class: "num" } : {}),
+          ),
+        );
+        const thead = el("thead");
+        thead.appendChild(head);
+        t.appendChild(thead);
+        const tbody = el("tbody");
+        for (const row of rows) {
+          const tr = el("tr");
+          row.forEach((cell, i) =>
+            tr.appendChild(
+              el(
+                "td",
+                cell,
+                numericColumns.includes(i) ? { class: "num" } : {},
+              ),
+            ),
+          );
+          tbody.appendChild(tr);
+        }
+        t.appendChild(tbody);
+        return t;
+      }
+
+      function txRows(transactions, rewardFirst) {
+        return transactions.map((tx, i) => [
+          rewardFirst && i === 0 ? "винагорода майнеру" : who(tx.from),
+          who(tx.to),
+          tx.amount ?? "",
+          tx.fee ?? "",
+          tx.nonce ?? "",
+        ]);
+      }
+
+      function renderNodes(list) {
+        renderIfChanged("nodes", [list, state.node], () => {
+          const box = $("nodes");
+          box.replaceChildren();
+          list.forEach((item, i) => {
+            const card = el("div", null, {
+              class: "card" + (i === state.node ? " selected" : ""),
+            });
+            card.appendChild(el("strong", "Вузол " + (i + 1)));
+            card.appendChild(el("div", item.url, { class: "muted" }));
+            if (!item.ok) {
+              card.appendChild(el("div", "недоступний"));
+            } else {
+              const s = item.status;
+              card.appendChild(
+                el("div", s.online ? "у мережі" : "відключений від мережі"),
+              );
+              card.appendChild(
+                el("div", "висота " + s.height + ", мемпул " + s.mempoolSize),
+              );
+              card.appendChild(
+                el("div", "кінець ланцюга " + short(s.lastBlockHash), {
+                  class: "mono",
+                }),
+              );
+              card.appendChild(el("div", "сумарна робота " + s.totalWork));
+            }
+            card.addEventListener("click", () => {
+              state.node = i;
+              state.seen.clear();
+              refresh();
+            });
+            box.appendChild(card);
+          });
+          const alive = list.filter((item) => item.ok);
+          const tips = new Set(alive.map((item) => item.status.lastBlockHash));
+          $("consensus").textContent =
+            alive.length === 0
+              ? "Жоден вузол не відповідає"
+              : tips.size === 1
+                ? "Усі доступні вузли мають однаковий кінець ланцюга: мережа синхронізована"
+                : "Вузли мають різний кінець ланцюга: у мережі розбіжність (форк)";
+        });
+      }
+
+      function renderState(s) {
+        if (!s.ok) {
+          $("banner").textContent = s.error;
+          return;
+        }
+        $("banner").textContent = "";
+        $("current").textContent = "(" + s.url + ")";
+        state.wallets = s.wallets;
+        state.names = new Map(s.wallets.map((w) => [w.address, w.name]));
+
+        renderIfChanged("peers", s.status.peers, () => {
+          $("peers").textContent =
+            s.status.peers.length > 0 ? s.status.peers.join(", ") : "немає";
+        });
+
+        renderIfChanged("wallets", s.wallets, () => {
+          const holder = $("wallets");
+          holder.replaceChildren();
+          for (const w of s.wallets) {
+            const tr = el("tr");
+            tr.appendChild(el("td", w.name));
+            tr.appendChild(el("td", w.address, { class: "mono" }));
+            tr.appendChild(el("td", w.balance ?? "—", { class: "num" }));
+            holder.appendChild(tr);
+          }
+          fillWalletSelects(s.wallets);
+        });
+
+        renderIfChanged("mempool", s.mempool, () => {
+          const box = $("mempool");
+          box.replaceChildren();
+          box.appendChild(
+            s.mempool.length === 0
+              ? el("span", "Порожньо", { class: "muted" })
+              : table(
+                  ["Від", "Кому", "Сума", "Комісія", "nonce"],
+                  txRows(s.mempool, false),
+                  [2, 3, 4],
+                ),
+          );
+        });
+
+        renderIfChanged("chain", s.blocks, () => {
+          const box = $("chain");
+          box.replaceChildren();
+          for (const block of [...s.blocks].reverse()) {
+            const d = el("details");
+            d.appendChild(
+              el(
+                "summary",
+                "Блок №" +
+                  block.index +
+                  " · " +
+                  short(block.hash) +
+                  " · складність " +
+                  block.difficulty +
+                  " · транзакцій " +
+                  block.transactions.length +
+                  " · " +
+                  formatTime(block.timestamp),
+              ),
+            );
+            const info = el("div");
+            info.appendChild(
+              el("div", "Хеш: " + block.hash, { class: "mono" }),
+            );
+            info.appendChild(
+              el("div", "Попередній хеш: " + block.previousHash, {
+                class: "mono",
+              }),
+            );
+            info.appendChild(el("div", "nonce: " + block.nonce));
+            d.appendChild(info);
+            if (block.transactions.length > 0) {
+              d.appendChild(
+                table(
+                  ["Від", "Кому", "Сума", "Комісія", "nonce"],
+                  txRows(block.transactions, block.index > 0),
+                  [2, 3, 4],
+                ),
+              );
+            }
+            box.appendChild(d);
+          }
+        });
+      }
+
+      // Підставляє гаманці у випадні списки, зберігаючи вибір користувача
+      function fillWalletSelects(wallets) {
+        const from = $("send-from");
+        const chosenFrom = from.value;
+        from.replaceChildren(
+          ...wallets.map((w) => el("option", w.name, { value: w.name })),
+        );
+        if (wallets.some((w) => w.name === chosenFrom)) from.value = chosenFrom;
+
+        const to = $("send-to-select");
+        to.replaceChildren(
+          el("option", "— підставити гаманець —", { value: "" }),
+          ...wallets.map((w) => el("option", w.name, { value: w.address })),
+        );
+      }
+
+      async function refresh() {
+        try {
+          const [list, s] = await Promise.all([
+            api("GET", "/api/nodes"),
+            api("GET", "/api/state?node=" + state.node),
+          ]);
+          renderNodes(list);
+          renderState(s);
+        } catch (error) {
+          $("banner").textContent =
+            "Немає зв'язку з сервером інтерфейсу: " + error.message;
+        }
+      }
+
+      const COMMAND_NAMES = {
+        "wallet-create": "створення гаманця",
+        send: "надіслати транзакцію",
+        mine: "майнінг",
+        sync: "синхронізація",
+        validate: "перевірка ланцюга",
+        offline: "відключити від мережі",
+        online: "підключити до мережі",
+        "add-peer": "додати сусіда",
+        "verify-tx": "перевірка легким клієнтом",
+      };
+
+      function addLog(title, ok, lines) {
+        const log = $("log");
+        if (log.classList.contains("muted")) {
+          log.replaceChildren();
+          log.classList.remove("muted");
+        }
+        const entry = el("div", null, { class: "entry" });
+        entry.appendChild(
+          el(
+            "strong",
+            new Date().toLocaleTimeString("uk-UA") +
+              " · " +
+              title +
+              " · " +
+              (ok ? "успішно" : "помилка"),
+          ),
+        );
+        entry.appendChild(el("pre", lines.join("\n")));
+        log.prepend(entry);
+      }
+
+      // Виконує дію на вибраному вузлі і записує результат у журнал
+      async function run(payload) {
+        if (state.busy) return;
+        state.busy = true;
+        document.querySelectorAll("button").forEach((b) => (b.disabled = true));
+        const title =
+          "вузол " + (state.node + 1) + ": " + COMMAND_NAMES[payload.command];
+        try {
+          const result = await api("POST", "/api/action", {
+            node: state.node,
+            ...payload,
+          });
+          addLog(title, result.code === 0, result.lines);
+        } catch (error) {
+          addLog(title, false, [error.message]);
+        } finally {
+          state.busy = false;
+          document
+            .querySelectorAll("button")
+            .forEach((b) => (b.disabled = false));
+          state.seen.clear();
+          refresh();
+        }
+      }
+
+      document
+        .querySelectorAll("button[data-cmd]")
+        .forEach((button) =>
+          button.addEventListener("click", () =>
+            run({ command: button.dataset.cmd }),
+          ),
+        );
+      $("add-peer").addEventListener("click", () =>
+        run({ command: "add-peer", url: $("peer-url").value.trim() }),
+      );
+      $("create-wallet").addEventListener("click", () => {
+        run({ command: "wallet-create", wallet: $("new-wallet").value.trim() });
+        $("new-wallet").value = "";
+      });
+      $("send-to-select").addEventListener("change", (event) => {
+        if (event.target.value) $("send-to").value = event.target.value;
+      });
+      $("send").addEventListener("click", () =>
+        run({
+          command: "send",
+          wallet: $("send-from").value,
+          to: $("send-to").value.trim(),
+          amount: $("send-amount").value.trim(),
+          fee: $("send-fee").value.trim(),
+        }),
+      );
+      $("verify").addEventListener("click", () =>
+        run({ command: "verify-tx", id: $("verify-id").value.trim() }),
+      );
+
+      refresh();
+      setInterval(() => {
+        if (!state.busy) refresh();
+      }, 3000);
+    </script>
+  </body>
+</html>
